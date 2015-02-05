@@ -3,7 +3,7 @@ angular.module('starter.controllers', [])
 .controller('AppCtrl', function($scope, $ionicModal, $timeout) {
 
   // Form data for the login modal
-  $scope.loginData = {};
+  $scope.confirmData = {};
 
   // Create the login modal that we will use later
   $ionicModal.fromTemplateUrl('templates/login.html', {
@@ -44,16 +44,23 @@ angular.module('starter.controllers', [])
       success: function(user) {
           $scope.$apply(function() {
               $scope.user = user;
+              $scope.confirmData.name = user.name;
+              $scope.confirmData.email = user.email;
+              console.log($scope.confirmData);
           });
       },
       error: function(error) {
-          $state.go('app/login');
+        console.log('erro no login');
+          // Open the login modal
+          $scope.login = function() {
+            $scope.modal.show();
+          };
+
       }
   });
 
   $scope.doConfirm = function(){
     console.log($scope.confirmData);
-    console.log($scope);
   };
 
 })
