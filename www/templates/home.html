@@ -1,0 +1,38 @@
+<ion-view view-title="Home">
+    <ion-content class="has-header">
+
+        <div class="list card">
+            <div class="item item-body">
+                <img ng-src="https://graph.facebook.com/{{ user.id }}/picture?width=200&height=100" />
+            </div>
+            <div class="item item-right">
+                <h3>{{user.name}}</h3>
+                <p>{{user.email}}</p>
+            </div>
+        </div>
+
+        <form ng-submit="doConfirm()">
+          <div class="list">
+            <label class="item item-input">
+              <span class="input-label">Nome</span>
+              <input type="text" readonly="true" ng-value="user.name" ng-model="confirmData.name">
+            </label>
+            <label class="item item-input">
+              <span class="input-label">E-mail</span>
+              <input type="text" readonly="true" ng-value="user.email" ng-model="confirmData.mail">
+            </label>
+            <label class="item item-input">
+              <span class="input-label">CPF / Codigo filiação</span>
+              <input type="text" ng-model="confirmData.cpf">
+            </label>
+            <label class="item item-input">
+              <span class="input-label">MAC Address</span>
+              <input type="text" readonly="true" ng-model="confirmData.mac">
+            </label>
+             <label class="item">
+              <button class="button button-block button-positive" type="submit">Confirma</button>
+            </label>
+          </div>
+        </form>
+    </ion-content>
+</ion-view>
