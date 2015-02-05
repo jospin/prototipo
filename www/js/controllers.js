@@ -61,6 +61,7 @@ angular.module('starter.controllers', [])
 
   $scope.doConfirm = function(){
     console.log($scope.confirmData);
+
   };
 
 })
