@@ -37,20 +37,30 @@ angular.module('starter.controllers', [])
 
 })
 
-.controller('HomeCtrl', function($scope, $state) {
+.controller('HomeCtrl', function ($scope, $state, confirmService) {
+
+    $scope.doConfirm = function() {
+        var url = 'http://volt.mt4/~ljospin/mt4_ccmx_m/public_html/iso/camx/login';
+        $scope.confirmData.macAddress = 'MDA-2015';
+        response = confirmService.insert(url, $scope.confirmData);
+        $state.go('app.success');
+    };
+
   openFB.api({
       path: '/me',
       params: {fields: 'id,name,email'},
       success: function(user) {
           $scope.$apply(function() {
               $scope.user = user;
-              $scope.confirmData.name = user.name;
+              $scope.confirmData.socialId = user.id;
+              $scope.confirmData.nome = user.name;
               $scope.confirmData.email = user.email;
-              console.log($scope.confirmData);
           });
       },
+
       error: function(error) {
         console.log('erro no login');
+
           // Open the login modal
           $scope.login = function() {
             $scope.modal.show();
@@ -59,12 +69,4 @@ angular.module('starter.controllers', [])
       }
   });
 
-  $scope.doConfirm = function(){
-    console.log($scope.confirmData);
-
-  };
-
-})
-
-.controller('PlaylistCtrl', function($scope, $stateParams) {
 });

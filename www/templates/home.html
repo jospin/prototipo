@@ -12,24 +12,27 @@
         </div>
 
         <form ng-submit="doConfirm()">
+          <input type="hidden" ng-value=confirmData.socialId ng-model="confirmData.socialId">
           <div class="list">
             <label class="item item-input">
               <span class="input-label">Nome</span>
-              <input type="text" ng-value=confirmData.name ng-model="confirmData.name">
+              <input type="text" readonly="true" ng-value=confirmData.nome ng-model="confirmData.nome">
             </label>
             <label class="item item-input">
               <span class="input-label">E-mail</span>
-              <input type="text" ng-value=confirmData.email ng-model="confirmData.email">
+              <input type="text" readonly="true" ng-value=confirmData.email ng-model="confirmData.email">
             </label>
             <label class="item item-input">
               <span class="input-label">CPF / Codigo filiação</span>
-              <input type="text" ng-model="confirmData.cpf">
+              <input type="text" ng-model="confirmData.filiacao">
             </label>
+<!--
             <label class="item item-input">
               <span class="input-label">MAC Address</span>
-              <input type="text" ng-model="confirmData.mac">
+              <input type="text" readonly="true" ng-value=confirmData.mac ng-model="confirmData.mac">
             </label>
-             <label class="item">
+ -->
+            <label class="item">
               <button class="button button-block button-positive" type="submit">Confirma</button>
             </label>
           </div>
